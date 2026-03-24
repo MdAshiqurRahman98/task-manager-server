@@ -6,8 +6,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
+app.use(cors({
+    origin: ['https://taskmanager-live.netlify.app'],
+    credentials: true
+}));
 app.use(express.json());
-app.use(cors());
 
 const uri = process.env.DATABASE_URI;
 const client = new MongoClient(uri, {
